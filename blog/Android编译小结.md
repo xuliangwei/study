@@ -1,8 +1,14 @@
+# Android编译小结
+
+---
+
+[TOC]
+
 正式开始一个新的平台，以前的项目拿到的代码都是供应商改好的，感觉有很多不规范的地方。
 
 这次从一个全新的项目着手，严格按照android规范进行项目的添加、板级文件的支持。目标是争取不改动build目录下的文件，而是用好它的扩展机制。
 
-### 在lunch中增加combo选项的标准方法
+# 在lunch中增加combo选项的标准方法
 在执行完. build/envsetup.sh后，执行lunch，会出现lunch菜单：
 ```
 You're building on Linux
@@ -42,7 +48,7 @@ add_lunch_combo aosp_flounder-userdebug
      7. aosp_flounder-userdebug
 ```
 
-### Android 5.1可以自动识别JAVA_HOME
+# Android 5.1可以自动识别JAVA_HOME
 参见build/envsetup.sh，代码如下：
 ```sh
 # Force JAVA_HOME to point to java 1.7 or java 1.6  if it isn't already set.
@@ -90,7 +96,7 @@ function set_java_home() {
 ```
 Android 5.1的编译使用了openjdk，在ubuntu上可以直接通过apt-get进行安装。
 
-### 如何新建一个device
+# 如何新建一个device
 * 从原有的device目录复制一份，将目录命名为你要新建的设备名称。如把msm8916_64复制一份，重命名为msm8916_d500。
 * 将msm8916_d500目录下的AndroidProducts.mk内容更新为：
 ```make

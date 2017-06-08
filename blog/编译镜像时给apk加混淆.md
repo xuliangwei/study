@@ -2,7 +2,7 @@
 
 ---
 
-## 打开混淆开关
+# 打开混淆开关
 Android.mk中经常会看到
 ```
 LOCAL_PROGUARD_ENABLED := full
@@ -39,8 +39,8 @@ LOCAL_PROGUARD_ENABLED := full obfuscation
 ```
 这时候再编译，就会看到类和方法大部分变成了a,b,c之类无意义的短变量，完成了混淆的功能。同时带来的好处是，apk的体积大约有20%的减小。
 
-## 解决混淆带来的问题
-### 问题：Warning: can't find referenced
+# 解决混淆带来的问题
+## 问题：Warning: can't find referenced
 如果应用中有引用的第三方jar库，在编译时会有可能碰到类似
 “Warning: can't find referenced class”
 之类的编译警告，导致编译失败，解决方案是要通过混淆配置文件来保留某些第三方的库不要被混淆。
@@ -58,5 +58,5 @@ LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 ```
 -dontwarn是消除警告，-keep是保留指定类和成员的命名，具体语法请参考ProGuard的语法说明，这里就不介绍了。
 
-### json序列化一个类时的要注意保留类的成员变量不被混淆
+## json序列化一个类时的要注意保留类的成员变量不被混淆
 json的序列化函数会直接使用类的变量的命名，如果这个类被混淆了，会导致序列化出来的文件可读性比较差，需要在proguard.flags中将这个类的成员变量设置为保留。
